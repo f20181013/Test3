@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+<body ng-app="Test3App">
+   <div class="container" ng-controller="NarrowItDownController as nitd">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
+
+    <div class="form-group">
+      <input type="text" placeholder="search term" class="form-control" ng-model="nitd.searchTerm">
+    </div>
+    <!-- {{nitd.searchTerm}} -->
+    <div class="form-group narrow-button">
+      <button class="btn btn-primary" ng-click="nitd.onClick()">Narrow It Down For Me!</button><br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+      <ul>
+        <li ng-repeat="item in nitd.found"><found-items></found-items>
+        <button ng-click="nitd.DontWant($index)">Don't want this one</button>
+        </li>
+      </ul>
+      <div style="color:red; font-weight:bold; font-size: 50px;" ng-if="nitd.flag">Nothing Found!</div>
+  </div>
+
+</body>
+</html>
